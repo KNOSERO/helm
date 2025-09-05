@@ -199,7 +199,10 @@ pipeline {
                         script {
                             withKubeConfig([credentialsId: 'jenkins-k3s']) {
                                 sh '''
-                                    helm install test-release1 . -f values/example1.yml --kubeconfig kubeconfig.yaml --dry-run --debug
+                                    helm install test-release1 . \
+                                        -f values/example1.yml \
+                                        --kubeconfig kubeconfig.yaml \
+                                        --dry-run --debug
                                 '''
                             }
                         }
@@ -210,7 +213,10 @@ pipeline {
                         script {
                             withKubeConfig([credentialsId: 'jenkins-k3s']) {
                                 sh '''
-                                    helm install test-release1 . -f values/example2.yml --kubeconfig kubeconfig.yaml --dry-run --debug
+                                    helm install test-release1 . \
+                                        -f values/example2.yml \
+                                        --kubeconfig kubeconfig.yaml \
+                                        --dry-run --debug
                                 '''
                             }
                         }
@@ -221,7 +227,10 @@ pipeline {
                         script {
                             withKubeConfig([credentialsId: 'jenkins-k3s']) {
                                 sh '''
-                                    helm install test-release1 . -f values/example3.yml --kubeconfig kubeconfig.yaml --dry-run --debug
+                                    helm install test-release1 . \
+                                        -f values/example3.yml \
+                                        --kubeconfig kubeconfig.yaml \
+                                        --dry-run --debug
                                 '''
                             }
                         }
