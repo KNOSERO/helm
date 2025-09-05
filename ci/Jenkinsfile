@@ -131,7 +131,6 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example1.yml
                                 helm template . -f values/example1.yml
-                                helm install test-release1 . -f values/example1.yml --dry-run --debug
                             '''
                         }
                     }
@@ -142,7 +141,6 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example2.yml
                                 helm template . -f values/example2.yml
-                                helm install test-release2 . -f values/example2.yml --dry-run --debug
                             '''
                         }
                     }
@@ -153,6 +151,36 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example3.yml
                                 helm template . -f values/example3.yml
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+        stage('Dry Run') {
+            parallel {
+                stage('Test Helm Example 1') {
+                    steps {
+                        script {
+                            sh '''
+                                helm install test-release1 . -f values/example1.yml --dry-run --debug
+                            '''
+                        }
+                    }
+                }
+                stage('Test Helm Example 2') {
+                    steps {
+                        script {
+                            sh '''
+                                helm install test-release2 . -f values/example2.yml --dry-run --debug
+                            '''
+                        }
+                    }
+                }
+                stage('Test Helm Example 3') {
+                    steps {
+                        script {
+                            sh '''
                                 helm install test-release3 . -f values/example3.yml --dry-run --debug
                             '''
                         }
