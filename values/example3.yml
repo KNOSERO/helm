@@ -11,14 +11,8 @@ service:
   type: ClusterIP
 
 ports:
-  - 8080
 
 volumes:
-  - name: workspace
-    hostPath: "/mnt/workspace"
-    mountPath: "/workspace"
 
 ingress:
   hosts:
-    - domain: test.local
-      port: 8080

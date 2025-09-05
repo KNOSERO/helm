@@ -17,6 +17,7 @@ spec:
         - name: {{ .Values.name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.ports }}
           ports:
           {{- range .Values.ports  }}
             - containerPort: {{ . }}
@@ -26,10 +27,13 @@ spec:
             - name: {{ .name }}
               mountPath: {{ .mountPath }}
           {{- end }}
+          {{- end }}
+      {{- if .Values.volumes }}
       volumes:
       {{- range .Values.volumes }}
         - name: {{ .name }}
           hostPath:
             path: {{ .hostPath }}
             type: DirectoryOrCreate
+      {{- end }}
       {{- end }}

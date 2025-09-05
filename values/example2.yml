@@ -12,13 +12,19 @@ service:
 
 ports:
   - 8080
+  - 5000
 
 volumes:
   - name: workspace
     hostPath: "/mnt/workspace"
     mountPath: "/workspace"
+  - name: config
+    hostPath: "/mnt/config"
+    mountPath: "/config"
 
 ingress:
   hosts:
     - domain: test.local
       port: 8080
+    - domain: dev.local
+      port: 5000
