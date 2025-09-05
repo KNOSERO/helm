@@ -14,7 +14,7 @@ pipeline {
         SECRET_WEBHOOK = 'github-secret-webhook'
         ACCOUNT = 'KNOSERO'
         REPO = 'helm'
-        PIPELINE_NAME = 'helm_validate'
+        PIPELINE_NAME = 'helm_pack_validate'
     }
     stages {
         stage('Configure Triggers') {
