@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sonarqube
+  name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
@@ -15,14 +15,14 @@ metadata:
 spec:
   rules:
   {{- range .Values.ingress.hosts }}
-    - host: {{ . }}
+    - host: {{ .domain }}
       http:
         paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: sonarqube
+              name: {{ $.Values.name }}
               port:
-                number: {{ $.Values.service.port }}
+                number: {{ .port }}
   {{- end }}
