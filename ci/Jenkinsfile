@@ -129,28 +129,26 @@ pipeline {
                                 string(credentialsId: 'jenkins-k3s-ca-cert', variable: 'CA_DATA'),
                                 string(credentialsId: 'jenkins-k3s-server-url', variable: 'SERVER')
                             ]) {
-                                sh '''
-                                    cat > kubeconfig.yaml <<EOF
-apiVersion: v1
-kind: Config
-clusters:
-- cluster:
-    certificate-authority-data: ${CA_DATA}
-    server: ${SERVER}
-  name: k3s
-contexts:
-- context:
-    cluster: k3s
-    user: jenkins-admin
-    namespace: jenkins
-  name: jenkins-admin@k3s
-current-context: jenkins-admin@k3s
-users:
-- name: jenkins-admin
-  user:
-    token: ${K8S_TOKEN}
-EOF
-                                '''
+                                def kubeconfig = "apiVersion: v1\n" +
+                                                 "kind: Config\n" +
+                                                 "clusters:\n" +
+                                                 "- cluster:\n" +
+                                                 "    certificate-authority-data: ${CA_DATA}\n" +
+                                                 "    server: ${SERVER}\n" +
+                                                 "  name: k3s\n" +
+                                                 "contexts:\n" +
+                                                 "- context:\n" +
+                                                 "    cluster: k3s\n" +
+                                                 "    user: jenkins-admin\n" +
+                                                 "    namespace: jenkins\n" +
+                                                 "  name: jenkins-admin@k3s\n" +
+                                                 "current-context: jenkins-admin@k3s\n" +
+                                                 "users:\n" +
+                                                 "- name: jenkins-admin\n" +
+                                                 "  user:\n" +
+                                                 "    token: ${K8S_TOKEN}\n"
+
+                                writeFile file: 'kubeconfig.yaml', text: kubeconfig
                             }
                         }
                     }
