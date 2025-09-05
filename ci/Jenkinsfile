@@ -131,25 +131,25 @@ pipeline {
                             ]) {
                                 sh '''
                                     cat > kubeconfig.yaml <<EOF
-                                    apiVersion: v1
-                                    kind: Config
-                                    clusters:
-                                    - cluster:
-                                        certificate-authority-data: ${CA_DATA}
-                                        server: ${SERVER}
-                                      name: k3s
-                                    contexts:
-                                    - context:
-                                        cluster: k3s
-                                        user: jenkins-admin
-                                        namespace: jenkins
-                                      name: jenkins-admin@k3s
-                                    current-context: jenkins-admin@k3s
-                                    users:
-                                    - name: jenkins-admin
-                                      user:
-                                        token: ${K8S_TOKEN}
-                                    EOF
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    certificate-authority-data: ${CA_DATA}
+    server: ${SERVER}
+  name: k3s
+contexts:
+- context:
+    cluster: k3s
+    user: jenkins-admin
+    namespace: jenkins
+  name: jenkins-admin@k3s
+current-context: jenkins-admin@k3s
+users:
+- name: jenkins-admin
+  user:
+    token: ${K8S_TOKEN}
+EOF
                                 '''
                             }
                         }
