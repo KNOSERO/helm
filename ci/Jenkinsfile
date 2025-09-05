@@ -131,6 +131,7 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example1.yml
                                 helm template . -f values/example1.yml
+                                helm install test-release1 . -f values/example1.yml --dry-run --debug
                             '''
                         }
                     }
@@ -141,6 +142,7 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example2.yml
                                 helm template . -f values/example2.yml
+                                helm install test-release2 . -f values/example2.yml --dry-run --debug
                             '''
                         }
                     }
@@ -151,6 +153,7 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example3.yml
                                 helm template . -f values/example3.yml
+                                helm install test-release3 . -f values/example3.yml --dry-run --debug
                             '''
                         }
                     }
