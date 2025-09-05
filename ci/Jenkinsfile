@@ -8,12 +8,12 @@ pipeline {
         ansiColor('xterm')
     }
     environment {
-        REPO_URL = 'https://github.com/KNOSERO/helm.git'
+        REPO_URL = 'https://github.com/KNOSERO/helm_pack.git'
         DEFAULT_BRANCH = 'master'
         CREDITS_ID = 'github-token'
         SECRET_WEBHOOK = 'github-secret-webhook'
         ACCOUNT = 'KNOSERO'
-        REPO = 'helm'
+        REPO = 'helm_pack'
         PIPELINE_NAME = 'helm_pack_validate'
     }
     stages {
