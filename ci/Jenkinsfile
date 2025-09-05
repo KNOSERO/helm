@@ -123,13 +123,31 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Lint test') {
             parallel {
-                stage('Test Helm') {
+                stage('Lint test Helm Example 1') {
                     steps {
                         script {
                             sh '''
-                                helm lint .
+                                helm lint . -f ./values/example1.yaml
+                            '''
+                        }
+                    }
+                }
+                stage('Lint test Helm Example 2') {
+                    steps {
+                        script {
+                            sh '''
+                                helm lint . -f ./values/example2.yaml
+                            '''
+                        }
+                    }
+                }
+                stage('Lint test Helm Example 3') {
+                    steps {
+                        script {
+                            sh '''
+                                helm lint . -f ./values/example3.yaml
                             '''
                         }
                     }
