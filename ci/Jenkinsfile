@@ -129,7 +129,7 @@ pipeline {
                     steps {
                         script {
                             sh '''
-                                helm lint . -f ./values/example1.yaml
+                                helm lint . -f values/example1.yml
                             '''
                         }
                     }
@@ -138,7 +138,7 @@ pipeline {
                     steps {
                         script {
                             sh '''
-                                helm lint . -f ./values/example2.yaml
+                                helm lint . -f values/example2.yml
                             '''
                         }
                     }
@@ -147,7 +147,7 @@ pipeline {
                     steps {
                         script {
                             sh '''
-                                helm lint . -f ./values/example3.yaml
+                                helm lint . -f values/example3.yml
                             '''
                         }
                     }
