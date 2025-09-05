@@ -123,9 +123,9 @@ pipeline {
             }
         }
 
-        stage('Lint test') {
+        stage('Test Lint') {
             parallel {
-                stage('Lint test Helm Example 1') {
+                stage('Test Lint Helm Example 1') {
                     steps {
                         script {
                             sh '''
@@ -134,7 +134,7 @@ pipeline {
                         }
                     }
                 }
-                stage('Lint test Helm Example 2') {
+                stage('Test Lint Helm Example 2') {
                     steps {
                         script {
                             sh '''
@@ -143,7 +143,7 @@ pipeline {
                         }
                     }
                 }
-                stage('Lint test Helm Example 3') {
+                stage('Test Lint Helm Example 3') {
                     steps {
                         script {
                             sh '''
