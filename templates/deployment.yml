@@ -22,6 +22,7 @@ spec:
           {{- range .Values.ports  }}
             - containerPort: {{ . }}
           {{- end }}
+          {{- end }}
           {{- if .Values.env }}
           env:
           {{- range .Values.env }}
