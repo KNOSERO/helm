@@ -46,6 +46,8 @@ spec:
               readOnly: true
               {{- end }}
           {{- end }}
+          securityContext:
+            runAsUser: {{ .Values.runAsUser }}
           {{- end }}
       {{- if or .Values.volumes .Values.configMounts }}
       volumes:
