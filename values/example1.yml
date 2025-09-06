@@ -25,9 +25,10 @@ volumes:
     mountPath: "/workspace"
 
 configMounts:
-  - configMap: grafana-config
+  - name: home-config
+    configMap: home-config
     mountPath: /work/home/home.yml
-    subPath: grafana.ini
+    subPath: home.yml
 
 configMaps:
   home: config/home.yml
