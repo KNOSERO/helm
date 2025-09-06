@@ -5,12 +5,14 @@ replicas: 1
 image:
   repository: hello-world
   tag: latest
-  pullPolicy: always
+  pullPolicy: Always
 
 service:
   type: ClusterIP
 
 ports:
+
+env:
 
 volumes:
 
