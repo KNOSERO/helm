@@ -8,7 +8,7 @@ metadata:
 data:
   {{- range $path, $file := $files }}
   {{ base $path }}: |-
-  {{ $file | indent 4 }}
+  {{ $file | toString | indent 4 }}
   {{- end }}
 ---
 {{- end }}
