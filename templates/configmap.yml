@@ -1,11 +1,14 @@
 {{- range $name, $glob := .Values.configMaps }}
-{{- $files := $.Files.Glob $glob }}
+  {{- $files := $.Files.Glob $glob }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ $name }}-config
   namespace: {{ $.Values.namespace }}
 data:
-  {{ $files.AsConfig | indent 2 }}
+  {{- range $path, $file := $files }}
+  {{ base $path }}: |-
+  {{ $file | indent 4 }}
+  {{- end }}
 ---
 {{- end }}
