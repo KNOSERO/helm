@@ -29,17 +29,18 @@ volumes:
     mountPath: "/config"
 
 configMounts:
-  - configMap: grafana-config
+  - name: home-config
+    configMap: home-config
     mountPath: /work/home/home.yml
-    subPath: grafana.ini
-  - configMap: home-config
+    subPath: home.yml
+  - name: test-config
+    configMap: test-config
     mountPath: /work/test
     readOnly: true
 
 configMaps:
   home: config/home.yml
   test: config/test.yml
-
 
 ingress:
   hosts:

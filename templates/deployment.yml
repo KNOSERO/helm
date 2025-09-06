@@ -37,7 +37,7 @@ spec:
               mountPath: {{ .mountPath }}
           {{- end }}
           {{- range .Values.configMounts }}
-            - name: {{ .configMap }}
+            - name: {{ .name }}
               mountPath: {{ .mountPath }}
               {{- if .subPath }}
               subPath: {{ .subPath }}
