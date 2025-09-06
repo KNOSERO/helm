@@ -30,19 +30,33 @@ spec:
               value: {{ .value }}
           {{- end }}
           {{- end }}
-          {{- if .Values.volumes }}
+          {{- if or .Values.volumes .Values.configMounts }}
           volumeMounts:
           {{- range .Values.volumes }}
             - name: {{ .name }}
               mountPath: {{ .mountPath }}
           {{- end }}
+          {{- range .Values.configMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
+              {{- end }}
+              {{- if .readOnly }}
+              readOnly: true
           {{- end }}
-      {{- if .Values.volumes }}
+          {{- end }}
+      {{- if or .Values.volumes .Values.configMounts }}
       volumes:
       {{- range .Values.volumes }}
         - name: {{ .name }}
           hostPath:
             path: {{ .hostPath }}
             type: DirectoryOrCreate
+      {{- end }}
+      {{- range .Values.configMounts }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .configMap }}
       {{- end }}
       {{- end }}
