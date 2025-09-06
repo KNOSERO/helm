@@ -30,6 +30,7 @@ spec:
               value: {{ .value }}
           {{- end }}
           {{- end }}
+          {{- if .Values.volumes }}
           volumeMounts:
           {{- range .Values.volumes }}
             - name: {{ .name }}
