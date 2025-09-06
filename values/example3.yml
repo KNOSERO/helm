@@ -16,5 +16,9 @@ env:
 
 volumes:
 
+configMounts:
+
+configMaps:
+
 ingress:
   hosts:

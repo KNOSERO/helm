@@ -24,6 +24,14 @@ volumes:
     hostPath: "/mnt/workspace"
     mountPath: "/workspace"
 
+configMounts:
+  - configMap: grafana-config
+    mountPath: /work/home/home.yml
+    subPath: grafana.ini
+
+configMaps:
+  home: config/home.yml
+
 ingress:
   hosts:
     - domain: test.local
