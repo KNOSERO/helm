@@ -164,6 +164,7 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example1.yml
                                 helm template . --debug -f values/example1.yml
+                                helm template . -f values/example2.yml
                             '''
                         }
                     }
@@ -174,6 +175,7 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example2.yml
                                 helm template . --debug -f values/example2.yml
+                                helm template . -f values/example2.yml
                             '''
                         }
                     }
@@ -184,6 +186,7 @@ pipeline {
                             sh '''
                                 helm lint . -f values/example3.yml
                                 helm template . --debug -f values/example3.yml
+                                helm template . -f values/example2.yml
                             '''
                         }
                     }
