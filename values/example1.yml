@@ -16,8 +16,8 @@ ports:
 env:
   - name: test
     value: test
-  - name: test
-    value: test
+  - name: home
+    value: home
 
 volumes:
   - name: workspace
