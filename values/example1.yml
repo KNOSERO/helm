@@ -13,6 +13,12 @@ service:
 ports:
   - 8080
 
+env:
+  - name: test
+    value: test
+  - name: test
+    value: test
+
 volumes:
   - name: workspace
     hostPath: "/mnt/workspace"

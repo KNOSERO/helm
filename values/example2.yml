@@ -14,6 +14,12 @@ ports:
   - 8080
   - 5000
 
+env:
+  - name: test
+    value: test
+  - name: home
+    value: home
+
 volumes:
   - name: workspace
     hostPath: "/mnt/workspace"
