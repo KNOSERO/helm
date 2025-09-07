@@ -41,8 +41,10 @@ configMounts:
     readOnly: true
 
 configMaps:
-  home: config/home.yml
-  test: config/test.yml
+  - name: home
+    path: config/home.yml
+  - name: test
+    path: config/test.yml
 
 ingress:
   hosts:
