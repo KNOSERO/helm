@@ -33,7 +33,7 @@ configMounts:
     subPath: home.yml
 
 configMaps:
-  home: config/home.yml
+  home-config: config/home.yml
 
 ingress:
   hosts:
