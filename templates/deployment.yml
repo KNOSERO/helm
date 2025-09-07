@@ -17,9 +17,9 @@ spec:
         - name: {{ .Values.name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.image.args }}
+          {{ - if .Values.image.args }}
           args: {{ toJson .Values.image.args }}
-          {{- end }}
+          {{ - end }}
           {{- if .Values.ports }}
           ports:
           {{- range .Values.ports  }}
