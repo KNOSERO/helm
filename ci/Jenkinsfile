@@ -154,6 +154,17 @@ pipeline {
                     }
                 }
             }
+
+            stage('Config Prepare') {
+                steps {
+                    script {
+                        def homeconfig = "name: \"home\"" +
+                        writeFile file: 'config/home.yml', text: homeconfig
+                        def testconfig = "name: \"test\"" +
+                        writeFile file: 'config/test.yml', text: testconfig
+                    }
+                }
+            }
         }
 
         stage('Test') {
