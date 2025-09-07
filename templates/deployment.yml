@@ -18,7 +18,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.image.args }}
-          args: {{ .Values.image.args }}
+          args:
+            {{ - toYaml .Values.image.args | nindent 6 }}
           {{- end}}
           {{- if .Values.ports }}
           ports:
