@@ -19,10 +19,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.image.args }}
           args:
-          {{- range .Values.image.args }}
-            - "{{ . }}"
-          {{- end}}
-          {{- end}}
+            {{- toYaml .Values.image.args | nindent 6 }}
+          {{- end }}
           {{- if .Values.ports }}
           ports:
           {{- range .Values.ports  }}
